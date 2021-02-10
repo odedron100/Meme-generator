@@ -55,21 +55,72 @@ const onHandleText = (ev) => {
     return ev.target.value = '';
   }
   var currMeme = getCurrMeme();
-  updateCurrMeme(currMeme.selectedImgId, 0, ev.target.value);
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  lineCurrMeme.txt = ev.target.value;
   currMeme = getCurrMeme();
-  renderMeme(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
 }
 
 const onFontSizeClicked = (direction) => {
   var currMeme = getCurrMeme();
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
   if (direction === 'up') {
-    // currMeme.lines[currMeme.selectedLineIdx].size = currMeme.lines[currMeme.selectedLineIdx].size + 5;
+    lineCurrMeme.size = lineCurrMeme.size + 5;
   } else {
-    // currMeme.lines[currMeme.selectedLineIdx].size = currMeme.lines[currMeme.selectedLineIdx].size - 5;
+    lineCurrMeme.size = lineCurrMeme.size - 5;
   }
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
+}
+
+const onChangeAlign = (align) => {
+  var currMeme = getCurrMeme();
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  if (align === 'right') {
+    lineCurrMeme.align = 'left';
+  } else if (align === 'left') {
+    lineCurrMeme.align = 'right';
+  } else {
+    lineCurrMeme.align = 'center';
+  }
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
+}
+
+const onSetFont = (font) => {
+  console.log('gCtx.font', gCtx.font);
+  var currMeme = getCurrMeme();
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  if (font === 'impact') {
+    lineCurrMeme.font = 'impact';
+  } else if (font === 'ariel') {
+    lineCurrMeme.font = 'ariel';
+  }
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+}
+
+const onChangeFontColor = (value) => {
+  var currMeme = getCurrMeme();
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  lineCurrMeme.color = value;
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+}
+
+const onDeleteLine = () => {
+  var currMeme = getCurrMeme();
+  deleteLine();
+  currMeme = getCurrMeme()
+  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+  resetInputs();
 }
 
 const renderCanvas = () => {
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');
+}
+
+const resetInputs = () => {
+  var elInputColor = document.querySelector('.input-color');
+  elInputColor.value = '#000000';
+  var elInputText = document.querySelector('.text-line');
+  elInputText.value = '';
 }
