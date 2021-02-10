@@ -25,7 +25,7 @@
     <main class="main-content">
       <header class="search-header">
         <div class="search-input">
-          <input type="list" placeholder="Search" name="search-input">
+          <input type="list" placeholder="SEARCH" name="search-input">
         </div>
         <div class="search-keywords">
           <span>hwrc</span>
@@ -44,9 +44,26 @@
         <canvas id="my-canvas" class="canvas" height="510" width="400px" onclick="draw(event)"></canvas>
       </div>
       <div class="editor-container">
-        <input type="text" name="name-editor" placeholder="txt-line">
+        <input type="text" name="name-editor" placeholder="Text-Line" onkeyup="onHandleText(event)" >
+        <div class="control-box">
+          <button class="font-size-up">A+</button>
+          <button class="font-size-down">A-</button>
+          <button class="line-up">↑</button>
+          <button class="line-down">↓</button>
+          <button class="add-line">+</button>
+          <button class="delete">X</button>
+          <button class="txt-align-left">left</button>
+          <button class="txt-align-center">center</button>
+          <button class="txt-align-right">right</button>
+          <select name="fonts" class="fonts">
+            <option value="impact">Impact</option>
+            <option value="ariel">Ariel</option>
+          </select>
+          <input type="color" name="font-color" class="input-color">
+        </div>
       </div>
     </section>
+
       <!-- <footer class="main-footer">
         <h3 class="footer-title"> something </h3>
         <div class="links">

@@ -1,5 +1,7 @@
 'use strict';
 
+var gCurrMeme;
+
 const gImgs = [
   { id: 1, url: 'img/1.jpg', keywords: ['trump'] },
   { id: 2, url: 'img/2.jpg', keywords: ['trump'] },
@@ -27,35 +29,32 @@ const getImgs = () => {
   return gImgs;
 }
 
-function getCurrImg(imgId) {
+const getCurrMeme = () => {
+  return gCurrMeme;
+}
+
+const getCurrImgById = (imgId) => {
   return gImgs.find(img => {
     return img.id === imgId;
   })
 }
 
-// const renderCanvas = () => {
-//   gElCanvas = document.getElementById('canvas');
-//   gCtx = gElCanvas.getContext('2d');
-// }
 
-// function drawImgFromlocal(imgUrl) {
-//   console.log('imgUrl', imgUrl);
-//   const img = new Image()
-//   img.src = './ ' + imgUrl;
-//   img.onload = () => {
-//     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
-//   }
-// }
-
-// const renderImg = (img) => {
-//   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
-// }
+const drawText = (txt) => {
+  gCtx.lineWidth = 2
+  gCtx.strokeStyle = 'red'
+  gCtx.fillStyle = 'white'
+  gCtx.font = '40px Arial'
+  gCtx.textAlign = 'center'
+  gCtx.fillText(txt, 200, 50)
+  // gCtx.strokeText(txt, x, y)
+}
 
 
-// const updateCurrImg = (img) => {
-//   gCurrImg = img;
-// }
-
-// const getCurrImg = (img) => {
-//   return gCurrImg
-// }
+const updateCurrMeme = (imgId, lineIdx, txt = '', size = 16, align = 'center', color = 'red') => {
+  gCurrMeme = {
+    selectedImgId: imgId,
+    selectedLineIdx: lineIdx,
+    lines: [{ txt, size, align, color }]
+  }
+}

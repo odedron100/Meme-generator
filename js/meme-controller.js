@@ -20,10 +20,10 @@ const renderGallery = () => {
 }
 
 const onImgClicked = (imgId) => {
-  // var imgSrc = img.src;
-  // var imgUrl = imgSrc.substr(imgSrc.indexOf('img'), imgSrc.length);
   openEditor();
   renderMeme(imgId)
+  // const currImg = getCurrImgById(imgId);
+  updateCurrMeme(imgId, 0)
 }
 
 const openEditor = () => {
@@ -40,13 +40,22 @@ const openOpenGallery = () => {
   elEditor.style.display = 'none';
 }
 
-function renderMeme(imgId) {
-  const currImage = getCurrImg(imgId);
+function renderMeme(imgId, txt = '') {
+  const currImage = getCurrImgById(imgId);
   const img = new Image();
   img.src = currImage.url;
   img.onload = () => {
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    drawText(txt);
   }
+}
+
+const onHandleText = (ev) => {
+  var currMeme = getCurrMeme();
+  updateCurrMeme(currMeme.selectedImgId, 0, ev.target.value);
+  currMeme = getCurrMeme();
+  renderMeme(currMeme.selectedImgId, currMeme.lines[0].txt)
+
 }
 
 const renderCanvas = () => {
