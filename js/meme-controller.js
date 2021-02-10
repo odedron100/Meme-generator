@@ -40,13 +40,16 @@ const openOpenGallery = () => {
   elEditor.style.display = 'none';
 }
 
-function renderMeme(imgId, txt = '') {
+function renderMeme(imgId) {
   const currImage = getCurrImgById(imgId);
   const img = new Image();
   img.src = currImage.url;
   img.onload = () => {
+    var currMeme = getCurrMeme();
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
-    drawText(txt);
+    currMeme.lines.forEach(line => {
+      drawText(line.txt, line.x, line.y, line.color, line.font, line.size);
+    })
   }
 }
 
@@ -58,7 +61,7 @@ const onHandleText = (ev) => {
   const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
   lineCurrMeme.txt = ev.target.value;
   currMeme = getCurrMeme();
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
+  renderMeme(currMeme.selectedImgId)
 }
 
 const onFontSizeClicked = (direction) => {
@@ -69,7 +72,7 @@ const onFontSizeClicked = (direction) => {
   } else {
     lineCurrMeme.size = lineCurrMeme.size - 5;
   }
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
+  renderMeme(currMeme.selectedImgId)
 }
 
 const onChangeAlign = (align) => {
@@ -82,7 +85,7 @@ const onChangeAlign = (align) => {
   } else {
     lineCurrMeme.align = 'center';
   }
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt)
+  renderMeme(currMeme.selectedImgId)
 }
 
 const onSetFont = (font) => {
@@ -94,14 +97,15 @@ const onSetFont = (font) => {
   } else if (font === 'ariel') {
     lineCurrMeme.font = 'ariel';
   }
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+  renderMeme(currMeme.selectedImgId);
+
 }
 
 const onChangeFontColor = (value) => {
   var currMeme = getCurrMeme();
   const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
   lineCurrMeme.color = value;
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+  renderMeme(currMeme.selectedImgId);
 }
 
 const onDeleteLine = () => {
@@ -109,12 +113,17 @@ const onDeleteLine = () => {
   deleteLine();
   currMeme = getCurrMeme()
   const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
-  renderMeme(currMeme.selectedImgId, lineCurrMeme.txt);
+  renderMeme(currMeme.selectedImgId);
   resetInputs();
 }
 
 const onSwitchLine = (direction) => {
   switchLine(direction);
+}
+
+const onAddLine = () => {
+  addLine();
+  resetInputs();
 }
 
 const renderCanvas = () => {

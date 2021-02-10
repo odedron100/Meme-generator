@@ -40,13 +40,13 @@ const getCurrImgById = (imgId) => {
 }
 
 
-const drawText = (txt, x = 200, y = 50) => {
+const drawText = (txt, x = 200, y = 50, color = 'white', font = 'impact', size = 50, align = 'center') => {
   gCtx.lineWidth = 2
   gCtx.strokeStyle = 'red'
-  gCtx.fillStyle = gCurrMeme.lines[gCurrMeme.selectedLineIdx].color;
-  gCtx.font = `${gCurrMeme.lines[gCurrMeme.selectedLineIdx].size}px ${gCurrMeme.lines[gCurrMeme.selectedLineIdx].font}`
-  gCtx.textAlign = gCurrMeme.lines[gCurrMeme.selectedLineIdx].align;
-  gCtx.fillText(txt, gCurrMeme.lines[gCurrMeme.selectedLineIdx].x, gCurrMeme.lines[gCurrMeme.selectedLineIdx].y)
+  gCtx.fillStyle = color;
+  gCtx.font = `${size}px ${font}`
+  gCtx.textAlign = align;
+  gCtx.fillText(txt, x, y)
   // gCtx.strokeText(txt, x, y)
 }
 
@@ -74,4 +74,11 @@ const switchLine = (direction) => {
     if (gCurrMeme.lines.length - 1 === gCurrMeme.selectedLineIdx) return;
     gCurrMeme.selectedLineIdx++;
   }
+}
+
+const addLine = (txt = '', size = 50, font = 'impact', align = 'center', color = 'white') => {
+  gCurrMeme.lines.push(
+    { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length },
+  )
+  gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
 }
