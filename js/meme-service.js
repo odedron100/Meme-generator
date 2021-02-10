@@ -21,6 +21,41 @@ const gImgs = [
   { id: 18, url: 'img/18.jpg', keywords: ['trump'] },
 ]
 
+var gCurrImg;
+
 const getImgs = () => {
   return gImgs;
 }
+
+function getCurrImg(imgId) {
+  return gImgs.find(img => {
+    return img.id === imgId;
+  })
+}
+
+// const renderCanvas = () => {
+//   gElCanvas = document.getElementById('canvas');
+//   gCtx = gElCanvas.getContext('2d');
+// }
+
+// function drawImgFromlocal(imgUrl) {
+//   console.log('imgUrl', imgUrl);
+//   const img = new Image()
+//   img.src = './ ' + imgUrl;
+//   img.onload = () => {
+//     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xend,yend
+//   }
+// }
+
+// const renderImg = (img) => {
+//   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+// }
+
+
+// const updateCurrImg = (img) => {
+//   gCurrImg = img;
+// }
+
+// const getCurrImg = (img) => {
+//   return gCurrImg
+// }
