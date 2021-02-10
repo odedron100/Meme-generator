@@ -46,20 +46,20 @@
       <div class="editor-container">
         <input type="text" name="name-editor" placeholder="Text-Line" onkeyup="onHandleText(event)" >
         <div class="control-box">
-          <button class="font-size-up">A+</button>
-          <button class="font-size-down">A-</button>
+          <button class="font-size-up" name="up" onclick="onFontSizeClicked(this.name)">A+</button>
+          <button class="font-size-down" name="down" onclick="onFontSizeClicked(this.name)">A-</button>
           <button class="line-up">↑</button>
           <button class="line-down">↓</button>
           <button class="add-line">+</button>
           <button class="delete">X</button>
-          <button class="txt-align-left">left</button>
-          <button class="txt-align-center">center</button>
-          <button class="txt-align-right">right</button>
-          <select name="fonts" class="fonts">
+          <button class="txt-align-left" name="txt-align-left" onclick="onChangeAlign(this.name)">left</button>
+          <button class="txt-align-center" name="txt-align-center" onclick="onChangeAlign(this.name)">center</button>
+          <button class="txt-align-right" name="txt-align-right" onclick="onChangeAlign(this.name)">right</button>
+          <select name="fonts" class="fonts" onchange="onSetFont(this.value)">
             <option value="impact">Impact</option>
             <option value="ariel">Ariel</option>
           </select>
-          <input type="color" name="font-color" class="input-color">
+          <input type="color" name="font-color" class="input-color" value="#000000" onblur="onChangeFontColor(this.value)">
         </div>
       </div>
     </section>

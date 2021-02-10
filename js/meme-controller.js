@@ -51,11 +51,22 @@ function renderMeme(imgId, txt = '') {
 }
 
 const onHandleText = (ev) => {
+  if (ev.keyCode === 13) {
+    return ev.target.value = '';
+  }
   var currMeme = getCurrMeme();
   updateCurrMeme(currMeme.selectedImgId, 0, ev.target.value);
   currMeme = getCurrMeme();
-  renderMeme(currMeme.selectedImgId, currMeme.lines[0].txt)
+  renderMeme(currMeme.selectedImgId, currMeme.lines[currMeme.selectedLineIdx].txt)
+}
 
+const onFontSizeClicked = (direction) => {
+  var currMeme = getCurrMeme();
+  if (direction === 'up') {
+    // currMeme.lines[currMeme.selectedLineIdx].size = currMeme.lines[currMeme.selectedLineIdx].size + 5;
+  } else {
+    // currMeme.lines[currMeme.selectedLineIdx].size = currMeme.lines[currMeme.selectedLineIdx].size - 5;
+  }
 }
 
 const renderCanvas = () => {

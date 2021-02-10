@@ -43,15 +43,15 @@ const getCurrImgById = (imgId) => {
 const drawText = (txt) => {
   gCtx.lineWidth = 2
   gCtx.strokeStyle = 'red'
-  gCtx.fillStyle = 'white'
-  gCtx.font = '40px Arial'
-  gCtx.textAlign = 'center'
+  gCtx.fillStyle = gCurrMeme.lines[gCurrMeme.selectedLineIdx].color;
+  gCtx.font = `${gCurrMeme.lines[gCurrMeme.selectedLineIdx].size}px Ariel`
+  gCtx.textAlign = gCurrMeme.lines[gCurrMeme.selectedLineIdx].align
   gCtx.fillText(txt, 200, 50)
   // gCtx.strokeText(txt, x, y)
 }
 
 
-const updateCurrMeme = (imgId, lineIdx, txt = '', size = 16, align = 'center', color = 'red') => {
+const updateCurrMeme = (imgId, lineIdx = 0, txt = '', size = 50, align = 'center', color = 'red') => {
   gCurrMeme = {
     selectedImgId: imgId,
     selectedLineIdx: lineIdx,
