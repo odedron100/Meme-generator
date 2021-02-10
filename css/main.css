@@ -62,6 +62,7 @@ body{
   align-items: center;
   grid-row: 2 / 2;
   grid-column: 1 / 1;
+  /* display: none; */
 }
 
 .main-content .search-header{
@@ -88,7 +89,26 @@ body{
 .main-content .gallery-container img{
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
+
+.meme-editor-container{
+  grid-template-columns: 50% 50%;
+  width: 80%;
+  justify-self: center;
+  background-color: wheat;
+  padding: 15px;
+  display: none;
+}
+
+.meme-editor-container .canvas{
+  background-color: violet;
+}
+
+.meme-editor-container .editor-container{
+  background-color: violet;
+}
+
 
 /* .main-footer{
   display: grid;

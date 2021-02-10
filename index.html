@@ -36,7 +36,7 @@
         </div>
       </header>
       <section class="gallery-container">
-        <img src="/img/1.jpg">
+        <img src="/img/1.jpg" onclick="onImgClicked(this)">
         <img src="/img/1.jpg">
         <img src="/img/1.jpg">
         <img src="/img/1.jpg">
@@ -50,6 +50,14 @@
         <img src="/img/1.jpg">
       </section>
     </main>
+    <section class="meme-editor-container">
+      <div class="canvas-container">
+        <canvas id="my-canvas" class="canvas" height="510" width="400px" onclick="draw(event)"></canvas>
+      </div>
+      <div class="editor-container">
+        <input type="text" name="name-editor" placeholder="txt-line">
+      </div>
+    </section>
       <!-- <footer class="main-footer">
         <h3 class="footer-title"> something </h3>
         <div class="links">
