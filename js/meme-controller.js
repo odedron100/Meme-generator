@@ -12,7 +12,7 @@ const renderGallery = () => {
   const strHTMLS = imgs.map(img => {
 
     return `
-      <img src="/img/${img.id}.jpg" onclick="onImgClicked(${img.id})">
+      <img src="img/${img.id}.jpg" onclick="onImgClicked(${img.id})">
     `
   }).join(' ');
   const elGallery = document.querySelector('.gallery-container');
