@@ -113,6 +113,10 @@ const onDeleteLine = () => {
   resetInputs();
 }
 
+const onSwitchLine = (direction) => {
+  switchLine(direction);
+}
+
 const renderCanvas = () => {
   gElCanvas = document.getElementById('my-canvas');
   gCtx = gElCanvas.getContext('2d');

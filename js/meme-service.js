@@ -46,7 +46,7 @@ const drawText = (txt, x = 200, y = 50) => {
   gCtx.fillStyle = gCurrMeme.lines[gCurrMeme.selectedLineIdx].color;
   gCtx.font = `${gCurrMeme.lines[gCurrMeme.selectedLineIdx].size}px ${gCurrMeme.lines[gCurrMeme.selectedLineIdx].font}`
   gCtx.textAlign = gCurrMeme.lines[gCurrMeme.selectedLineIdx].align;
-  gCtx.fillText(txt, x, y)
+  gCtx.fillText(txt, gCurrMeme.lines[gCurrMeme.selectedLineIdx].x, gCurrMeme.lines[gCurrMeme.selectedLineIdx].y)
   // gCtx.strokeText(txt, x, y)
 }
 
@@ -55,10 +55,23 @@ const updateCurrMeme = (imgId, lineIdx = 0, txt = '', size = 50, font = 'impact'
   gCurrMeme = {
     selectedImgId: imgId,
     selectedLineIdx: lineIdx,
-    lines: [{ txt, size, font, align, color }]
+    lines: [
+      { txt, size, font, align, color, x: 200, y: 50 },
+      { txt, size, font, align, color, x: 200, y: 450 }
+    ]
   }
 }
 
 const deleteLine = () => {
   updateCurrMeme(gCurrMeme.selectedImgId);
+}
+
+const switchLine = (direction) => {
+  if (direction === 'up') {
+    if (gCurrMeme.selectedLineIdx === 0) return;
+    gCurrMeme.selectedLineIdx--;
+  } else if (direction === 'down') {
+    if (gCurrMeme.lines.length - 1 === gCurrMeme.selectedLineIdx) return;
+    gCurrMeme.selectedLineIdx++;
+  }
 }
