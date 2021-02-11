@@ -110,15 +110,14 @@ const onChangeFontColor = (value) => {
 
 const onDeleteLine = () => {
   var currMeme = getCurrMeme();
-  deleteLine();
-  currMeme = getCurrMeme()
-  const lineCurrMeme = currMeme.lines[currMeme.selectedLineIdx];
+  deleteLine(gCurrMeme.selectedLineIdx);
   renderMeme(currMeme.selectedImgId);
   resetInputs();
 }
 
 const onSwitchLine = (direction) => {
   switchLine(direction);
+  resetInputs();
 }
 
 const onAddLine = () => {
@@ -136,4 +135,12 @@ const resetInputs = () => {
   elInputColor.value = '#000000';
   var elInputText = document.querySelector('.text-line');
   elInputText.value = '';
+}
+
+const onDeleteAll = () => {
+  var currMeme = getCurrMeme();
+  deleteAll();
+  // currMeme = getCurrMeme()
+  renderMeme(currMeme.selectedImgId);
+  resetInputs();
 }

@@ -63,6 +63,15 @@ const updateCurrMeme = (imgId, lineIdx = 0, txt = '', size = 50, font = 'impact'
 }
 
 const deleteLine = () => {
+  if (gCurrMeme.lines.length > 1 && gCurrMeme.selectedLineIdx > 0) {
+    gCurrMeme.lines.splice(gCurrMeme.selectedLineIdx, 1);
+    gCurrMeme.selectedLineIdx--;
+  } else {
+    updateCurrMeme(gCurrMeme.selectedImgId);
+  }
+}
+
+const deleteAll = () => {
   updateCurrMeme(gCurrMeme.selectedImgId);
 }
 
@@ -71,14 +80,18 @@ const switchLine = (direction) => {
     if (gCurrMeme.selectedLineIdx === 0) return;
     gCurrMeme.selectedLineIdx--;
   } else if (direction === 'down') {
-    if (gCurrMeme.lines.length - 1 === gCurrMeme.selectedLineIdx) return;
     gCurrMeme.selectedLineIdx++;
+    if (gCurrMeme.selectedLineIdx === gCurrMeme.lines.length) {
+      gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
+    }
   }
 }
 
 const addLine = (txt = '', size = 50, font = 'impact', align = 'center', color = 'white') => {
-  gCurrMeme.lines.push(
+  gCurrMeme.lines.splice(gCurrMeme.selectedLineIdx + 1, 0,
     { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length },
   )
-  gCurrMeme.selectedLineIdx = gCurrMeme.lines.length - 1;
+  gCurrMeme.selectedLineIdx++;
+  console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
+  console.log('gCurrMeme.lines', gCurrMeme.lines);
 }

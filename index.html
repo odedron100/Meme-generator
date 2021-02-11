@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <title>Meme generator</title>
 </head>
 <body onload="init()">
@@ -52,6 +54,7 @@
           <button class="line-down" name="down" onclick="onSwitchLine(this.name)">↓</button>
           <button class="add-line" onclick="onAddLine()">+</button>
           <button class="delete" onclick="onDeleteLine()">X</button>
+          <button class="deleteAll" onclick="onDeleteAll()">XX</button>
           <button class="txt-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
           <button class="txt-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
           <button class="txt-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>

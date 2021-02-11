@@ -5,6 +5,7 @@
 body{
   margin: 0;
   height: 100vh;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .grid-site-container{
@@ -25,12 +26,15 @@ body{
 
 .main-header .header-container{
   display: grid;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
   grid-template-columns: 30% 70%;
   align-items: center;
-  width: 80%;
+  min-width: 860px;
   height: 100%;
+}
+
+.main-header .header-container .logo{
+  font-size: 2rem;
+  color: white;
 }
 
 .main-header .header-container .main-nav{
@@ -56,8 +60,6 @@ body{
   display: grid;
   grid-template-rows: 10% 1fr;
   width: 80%;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
   justify-self: center;
   align-items: center;
   grid-row: 2 / 2;
@@ -94,7 +96,7 @@ body{
 
 .meme-editor-container{
   grid-template-columns: 50% 50%;
-  width: 80%;
+  min-width: 860px;
   justify-self: center;
   background-color: wheat;
   padding: 15px;
@@ -107,7 +109,11 @@ body{
 
 .meme-editor-container .editor-container{
   background-color: violet;
+  display: grid;
+  grid-template-rows: 50px 1fr 150px;
 }
+
+
 
 
 /* .main-footer{
