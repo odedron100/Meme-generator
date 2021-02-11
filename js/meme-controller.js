@@ -173,6 +173,10 @@ const onMemsOpen = () => {
   elContent.style.display = 'none';
   elEditor.style.display = 'none';
   elMems.style.display = 'block';
+
+  var mems = loadFromStorage(KEY);
+  console.log('mems', mems);
+  renderMemes(mems);
 }
 
 const onHandleChangeSearch = (ev) => {
@@ -183,31 +187,26 @@ const toggleMenu = () => {
   document.body.classList.toggle('open-menu');
 }
 
-// const filteredMems = {};
+const onSave = () => {
+  console.log('gCurrMeme', gCurrMeme);
+  // console.log('gElCanvas.toDataURL()', gElCanvas.toDataURL());
+  // gCtx
+  // console.log('gCtx.getImageData()', gCtx.getImageData(0, 0, 450, 510));
+  // gMems.push(gCtx.getImageData(0, 0, 450, 510).data);
+  console.log('gMems', gMems);
+  gMems.push(gElCanvas.toDataURL());
+  _saveToLocalStorage();
+  // _saveToLocalStorage(gCurrMeme.selectedImgId);
+  onMemsOpen();
+}
 
-// filterMems.forEach(currentKey => {
-//   const item = this.originalUsersObject[currentKey];
-//   filteredUsersAsObject[currentKey] = item;
-// });
-
-// this.setState({ users: filteredUsersAsObject });
-// }
-
-// const onSave = () => {
-//   gMems.push(gCurrMeme);
-//   _saveToLocalStorage();
-//   onMemsOpen();
-//   var mems = loadFromStorage(KEY);
-//   console.log('mems', mems);
-//   renderMemes(mems);
-// }
-
-// const renderMemes = (mems) => {
-//   const strHTMLS = mems.map(mem => {
-//     return `
-//       <img src="img/${mem.id}.jpg" onclick="onImgClicked(${mem.id})">
-//     `
-//   }).join(' ');
-//   const elMems = document.querySelector('.save-mems-container');
-//   elMems.innerHTML = strHTMLS;
-// }
+const renderMemes = (mems) => {
+  const strHTMLS = mems.map(mem => {
+    console.log('mem', mem);
+    return `
+      <img src="${mem}" onclick="onImgClicked(${mem.id})">
+    `
+  }).join(' ');
+  const elMems = document.querySelector('.save-mems-container');
+  elMems.innerHTML = strHTMLS;
+}
