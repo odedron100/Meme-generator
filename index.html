@@ -17,7 +17,7 @@
         <div class="logo">MEME Creator</div>
         <nav class="main-nav">
           <ul class="nav-links">
-            <li class="link" onclick="openOpenGallery()"> <a href="#">Gallery</a></li>
+            <li class="link" onclick="openGallery()"> <a href="#">Gallery</a></li>
             <li class="link" onclick="onMemsOpen()" > <a href="#">Memes</a></li>
             <li class="link"> <a href="#">About</a></li>
           </ul>
@@ -41,32 +41,38 @@
 
       </section>
     </main>
-    <section class="meme-editor-container">
-      <div class="canvas-container">
-        <canvas id="my-canvas" class="canvas" height="510" width="450px" onclick="draw(event)"></canvas>
-      </div>
-      <div class="editor-container">
-        <input type="text" name="name-editor" class="text-line" placeholder="Text-Line" onkeyup="onHandleText(event)" >
-        <div class="control-box">
-          <button class="font-size-up" name="up" onclick="onFontSizeClicked(this.name)">A+</button>
-          <button class="font-size-down" name="down" onclick="onFontSizeClicked(this.name)">A-</button>
-          <button class="line-up" name="up" onclick="onSwitchLine(this.name)">↑</button>
-          <button class="line-down" name="down" onclick="onSwitchLine(this.name)">↓</button>
-          <button class="add-line" onclick="onAddLine()">+</button>
-          <button class="delete" onclick="onDeleteLine()">X</button>
-          <button class="deleteAll" onclick="onDeleteAll()">XX</button>
-          <button class="txt-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
-          <button class="txt-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
-          <button class="txt-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>
-          <select name="fonts" class="fonts" onchange="onSetFont(this.value)">
-            <option value="impact">Impact</option>
-            <option value="ariel">Ariel</option>
-          </select>
-          <input type="color" name="font-color" class="input-color" value="#000000" onblur="onChangeFontColor(this.value)">
-          <button class="save-button" onclick="onSave()">SAVE</button>
+    <div class="meme-editor-modal-container">
+      <section class="meme-editor-modal">
+        <div class="canvas-container">
+          <canvas id="my-canvas" class="canvas" height="510" width="450px" onclick="draw(event)"></canvas>
         </div>
-      </div>
-    </section>
+        <div class="editor-container">
+          <input type="text" name="name-editor" class="text-line" placeholder="Write something on the Meme" onkeyup="onHandleText(event)" >
+          <div class="control-box">
+            <button class="editor-button font-size-up" name="up" onclick="onFontSizeClicked(this.name)">A+</button>
+            <button class="editor-button font-size-down" name="down" onclick="onFontSizeClicked(this.name)">A-</button>
+            <button class="editor-button line-up" name="up" onclick="onSwitchLine(this.name)">↑</button>
+            <button class="editor-button line-down" name="down" onclick="onSwitchLine(this.name)">↓</button>
+            <button class="editor-button add-line" onclick="onAddLine()">+</button>
+            <button class="editor-button delete" onclick="onDeleteLine()">X</button>
+            <button class="editor-button deleteAll" onclick="onDeleteAll()">XX</button>
+            <button class="editor-button txt-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
+            <button class="editor-button txt-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
+            <button class="editor-button txt-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>
+            <input type="color" name="font-color" class="editor-button input-color" value="#000000" onblur="onChangeFontColor(this.value)">
+            <div class="fonts-select-contaier">
+              <select name="fonts" class="fonts" onchange="onSetFont(this.value)">
+                <option value="impact">Impact</option>
+                <option value="ariel">Ariel</option>
+              </select>
+            </div>
+            <div class="save-button-container">
+              <button class="editor-button save-button" onclick="onSave()">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
     <section class="save-mems-container">
 
     </section>

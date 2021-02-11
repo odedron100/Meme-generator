@@ -6,6 +6,13 @@ var KEY = 'mems';
 const init = () => {
   renderGallery();
   renderCanvas();
+
+  const elEditor = document.querySelector('.meme-editor-modal-container');
+  elEditor.addEventListener('click', (e) => {
+    if (e.target === elEditor) {
+      openGallery();
+    }
+  });
 }
 
 const renderGallery = (imgsAfterSearch) => {
@@ -37,18 +44,21 @@ const onImgClicked = (imgId) => {
 
 const openEditor = () => {
   const elContent = document.querySelector('.main-content');
-  const elEditor = document.querySelector('.meme-editor-container');
+  const elEditor = document.querySelector('.meme-editor-modal-container');
   const elMems = document.querySelector('.save-mems-container');
-  elContent.style.display = 'none';
-  elEditor.style.display = 'grid';
+  // elContent.style.display = 'none';
+  // elEditor.style.display = 'flex';
+  elEditor.classList.add('visible');
   elMems.style.display = 'none';
 }
 
-const openOpenGallery = () => {
+const openGallery = () => {
+  console.log('oopenGallery');
   const elContent = document.querySelector('.main-content');
-  const elEditor = document.querySelector('.meme-editor-container');
+  const elEditor = document.querySelector('.meme-editor-modal-container');
   elContent.style.display = 'grid';
-  elEditor.style.display = 'none';
+  elEditor.classList.remove('visible');
+  // elEditor.style.display = 'none';
 }
 
 function renderMeme(imgId) {
@@ -159,7 +169,7 @@ const onDeleteAll = () => {
 const onMemsOpen = () => {
   const elMems = document.querySelector('.save-mems-container');
   const elContent = document.querySelector('.main-content');
-  const elEditor = document.querySelector('.meme-editor-container');
+  const elEditor = document.querySelector('.meme-editor-modal-container');
   elContent.style.display = 'none';
   elEditor.style.display = 'none';
   elMems.style.display = 'block';

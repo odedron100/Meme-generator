@@ -178,21 +178,116 @@ body{
   opacity: 1;
 }
 
-.meme-editor-container{
-  grid-template-columns: 50% 50%;
-  min-width: 860px;
+.meme-editor-modal-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.meme-editor-modal-container.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.meme-editor-modal{
+  /* grid-template-columns: 50% 50%; */
+  /* min-width: 860px; */
   justify-self: center;
-  display: none;
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
 }
 
-.meme-editor-container .canvas{
+.meme-editor-modal .canvas-container{
+  /* flex: 1; */
+  /* text-align: center; */
+  margin-right: 20px;
+}
+
+.meme-editor-modal .canvas{
   background-color: rgb(201, 210, 218);
 }
 
-.meme-editor-container .editor-container{
-  background-color: rgb(201, 210, 218);
-  display: grid;
-  grid-template-rows: 50px 1fr 150px;
+.meme-editor-modal .editor-container{
+  /* background-color: rgb(201, 210, 218); */
+  background-color: rgb(51, 51, 51, 0.8);
+  padding: 20px;
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+
+  /* display: grid; */
+  /* grid-template-rows: 50px 1fr 150px; */
+  /* text-align: center; */
+
+  /* flex: 1; */
+}
+
+.meme-editor-modal .editor-container .control-box{
+  /* width: 1; */
+  width: 100%;
+  /* text-align: center; */
+}
+
+.meme-editor-modal .editor-container .control-box .fonts-select-contaier {
+  text-align: center;
+  margin: 10px 0;
+  width: 200px;
+  height: 40px;
+}
+
+.meme-editor-modal .editor-container .control-box .fonts {
+  height: 100%;
+  width: 100%;
+}
+
+.meme-editor-modal .editor-container .control-box .editor-button{
+  width: 80px;
+  height: 40px;
+  font-size: 20px;
+  font-style: italic;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 50px;
+  color: white;
+  margin: 10px;
+  transition: transform 0.15s ease-in-out;
+}
+
+.meme-editor-modal .editor-container .control-box .save-button-container .editor-button {
+  width: 200px;
+}
+
+.meme-editor-modal .editor-container .control-box .editor-button:hover{
+  transform: scale(1.05);
+}
+
+.meme-editor-modal .editor-container input{
+  width: 300px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 50px;
+  padding: 0 20px;
+  outline: none;
+  text-align: center;
+  transition: width 0.3s ease-in-out;
+}
+
+.meme-editor-modal .editor-container input:focus{
+  width: 400px;
 }
 
 .save-mems-container{
@@ -216,8 +311,10 @@ body{
     width: 80%;
   }
 
-  .meme-editor-container{
+  .meme-editor-modal{
     width: 80%;
+    position: absolute;
+    top: 0
   }
   .main-header .header-container .main-nav .nav-links{
    display: flex;
