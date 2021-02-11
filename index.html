@@ -14,27 +14,27 @@
   <div class="grid-site-container">
     <header class="main-header">
       <div class="header-container">
-        <div class="logo">logo</div>
+        <div class="logo">MEME Creator</div>
         <nav class="main-nav">
           <ul class="nav-links">
             <li class="link" onclick="openOpenGallery()"> <a href="#">Gallery</a></li>
-            <li class="link"> <a href="#">Memes</a></li>
+            <li class="link" onclick="onMemsOpen()" > <a href="#">Memes</a></li>
             <li class="link"> <a href="#">About</a></li>
           </ul>
+          <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
       </div>
     </header>
     <main class="main-content">
       <header class="search-header">
-        <div class="search-input">
-          <input type="list" placeholder="SEARCH" name="search-input">
+        <div class="search-input-div">
+          <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onHandleChangeSearch(event)">
         </div>
         <div class="search-keywords">
-          <span>hwrc</span>
-          <span>hwrc</span>
-          <span>hwrc</span>
-          <span>hwrc</span>
-          <span>hwrc</span>
+          <span>funny</span>
+          <span>pets</span>
+          <span>baby</span>
+          <span>actor</span>
         </div>
       </header>
       <section class="gallery-container">
@@ -43,7 +43,7 @@
     </main>
     <section class="meme-editor-container">
       <div class="canvas-container">
-        <canvas id="my-canvas" class="canvas" height="510" width="400px" onclick="draw(event)"></canvas>
+        <canvas id="my-canvas" class="canvas" height="510" width="450px" onclick="draw(event)"></canvas>
       </div>
       <div class="editor-container">
         <input type="text" name="name-editor" class="text-line" placeholder="Text-Line" onkeyup="onHandleText(event)" >
@@ -63,8 +63,12 @@
             <option value="ariel">Ariel</option>
           </select>
           <input type="color" name="font-color" class="input-color" value="#000000" onblur="onChangeFontColor(this.value)">
+          <button class="save-button" onclick="onSave()">SAVE</button>
         </div>
       </div>
+    </section>
+    <section class="save-mems-container">
+
     </section>
 
       <!-- <footer class="main-footer">
