@@ -53,6 +53,13 @@ body{
   align-items: center;
 }
 
+.main-header .header-container .main-nav .nav-links .links-div{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
 .main-header .header-container .main-nav .nav-links .link >*{
   color: rgba(255, 255, 255, 0.721);
   text-decoration: none;
