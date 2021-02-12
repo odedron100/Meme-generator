@@ -6,6 +6,7 @@ var KEY = 'mems';
 const init = () => {
   renderGallery();
   renderCanvas();
+  createMems();
 
   const elEditor = document.querySelector('.meme-editor-modal-container');
   elEditor.addEventListener('click', (e) => {
@@ -13,6 +14,12 @@ const init = () => {
       openGallery();
     }
   });
+  // const elEditor = document.querySelector('.meme-editor-modal-container');
+  // elEditor.addEventListener('click', (e) => {
+  //   if (e.target === elEditor) {
+  //     openGallery();
+  //   }
+  // });
 }
 
 const renderGallery = (imgsAfterSearch) => {
@@ -46,8 +53,6 @@ const openEditor = () => {
   const elContent = document.querySelector('.main-content');
   const elEditor = document.querySelector('.meme-editor-modal-container');
   const elMems = document.querySelector('.save-mems-container');
-  // elContent.style.display = 'none';
-  // elEditor.style.display = 'flex';
   elEditor.classList.add('visible');
   elMems.style.display = 'none';
 }
@@ -56,8 +61,10 @@ const openGallery = () => {
   console.log('oopenGallery');
   const elContent = document.querySelector('.main-content');
   const elEditor = document.querySelector('.meme-editor-modal-container');
+  const elMems = document.querySelector('.save-mems-container');
   elContent.style.display = 'grid';
   elEditor.classList.remove('visible');
+  elMems.style.display = 'none';
   // elEditor.style.display = 'none';
 }
 
@@ -171,11 +178,10 @@ const onMemsOpen = () => {
   const elContent = document.querySelector('.main-content');
   const elEditor = document.querySelector('.meme-editor-modal-container');
   elContent.style.display = 'none';
-  elEditor.style.display = 'none';
+  elEditor.classList.remove('visible');
   elMems.style.display = 'block';
 
   var mems = loadFromStorage(KEY);
-  console.log('mems', mems);
   renderMemes(mems);
 }
 
@@ -188,15 +194,8 @@ const toggleMenu = () => {
 }
 
 const onSave = () => {
-  console.log('gCurrMeme', gCurrMeme);
-  // console.log('gElCanvas.toDataURL()', gElCanvas.toDataURL());
-  // gCtx
-  // console.log('gCtx.getImageData()', gCtx.getImageData(0, 0, 450, 510));
-  // gMems.push(gCtx.getImageData(0, 0, 450, 510).data);
-  console.log('gMems', gMems);
   gMems.push(gElCanvas.toDataURL());
   _saveToLocalStorage();
-  // _saveToLocalStorage(gCurrMeme.selectedImgId);
   onMemsOpen();
 }
 
@@ -204,7 +203,7 @@ const renderMemes = (mems) => {
   const strHTMLS = mems.map(mem => {
     console.log('mem', mem);
     return `
-      <img src="${mem}" onclick="onImgClicked(${mem.id})">
+      <img src="${mem}" class="mems-img">
     `
   }).join(' ');
   const elMems = document.querySelector('.save-mems-container');

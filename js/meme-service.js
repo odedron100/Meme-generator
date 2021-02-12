@@ -1,7 +1,7 @@
 'use strict';
 
 var gCurrMeme;
-var gMems = [];
+var gMems;
 
 const gImgs = [
   { id: 1, url: 'img/1.jpg', keywords: ['president'] },
@@ -23,7 +23,6 @@ const gImgs = [
   { id: 17, url: 'img/17.jpg', keywords: ['president'] },
   { id: 18, url: 'img/18.jpg', keywords: ['toy'] },
 ]
-
 var gCurrImg;
 
 const getImgs = () => {
@@ -39,6 +38,8 @@ const getCurrImgById = (imgId) => {
     return img.id === imgId;
   })
 }
+
+
 
 
 const drawText = (txt, x = 200, y = 50, color = 'white', font = 'impact', size = 50, align = 'center') => {
@@ -110,4 +111,13 @@ const filterGalleryImg = (value) => {
 
 function _saveToLocalStorage() {
   saveToStorage(KEY, gMems);
+}
+
+const createMems = () => {
+  var mems = loadFromStorage(KEY);
+  if (!mems || !mems.length) {
+    mems = []
+  }
+  gMems = mems;
+  _saveToLocalStorage();
 }

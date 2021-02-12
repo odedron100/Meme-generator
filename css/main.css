@@ -44,8 +44,6 @@ body{
 .main-header .header-container .main-nav{
     width: 70%;
     justify-self: right;
-    /* display: flex; */
-    /* line-height: 75px; */
 }
 
 .main-header .header-container .main-nav .nav-links{
@@ -53,29 +51,18 @@ body{
   list-style: none;
   justify-content: space-between;
   align-items: center;
-  /* display: flex;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
-    align-items: center; */
 }
 
 .main-header .header-container .main-nav .nav-links .link >*{
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.721);
   text-decoration: none;
   font-size: 24px;
-  /* display: flex;
-    color: #FFFFFF;
-    list-style-type: none;
-    height: 131px;
-    width: 132px;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    transition: box-shadow 0.3s; */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.main-header .header-container .main-nav .nav-links .link >*:hover{
+  transform: scale(1.1);
+  color: white;
 }
 
 .main-content{
@@ -199,8 +186,6 @@ body{
 }
 
 .meme-editor-modal{
-  /* grid-template-columns: 50% 50%; */
-  /* min-width: 860px; */
   justify-self: center;
   display: flex;
   justify-content: center;
@@ -208,8 +193,6 @@ body{
 }
 
 .meme-editor-modal .canvas-container{
-  /* flex: 1; */
-  /* text-align: center; */
   margin-right: 20px;
 }
 
@@ -222,16 +205,10 @@ body{
   background-color: rgb(51, 51, 51, 0.8);
   padding: 20px;
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   max-width: 600px;
 
-  /* display: grid; */
-  /* grid-template-rows: 50px 1fr 150px; */
-  /* text-align: center; */
-
-  /* flex: 1; */
 }
 
 .meme-editor-modal .editor-container .control-box{
@@ -264,10 +241,12 @@ body{
   color: white;
   margin: 10px;
   transition: transform 0.15s ease-in-out;
+  outline: none;
 }
 
 .meme-editor-modal .editor-container .control-box .save-button-container .editor-button {
   width: 200px;
+  outline: none;
 }
 
 .meme-editor-modal .editor-container .control-box .editor-button:hover{
@@ -291,11 +270,19 @@ body{
 }
 
 .save-mems-container{
-  min-width: 860px;
+  width: 80%;
   justify-self: center;
-  background-color: wheat;
+  background-color: rgb(255, 255, 255);
   padding: 15px;
   display: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px 10px;
+}
+
+.mems-img{
+  height: 200px;
+  border-radius: 3px;
 }
 
 .control-box >*{
@@ -303,7 +290,6 @@ body{
   height: 30px;
   border: none;
   border-radius: 5px;
-
 }
 
 @media (max-width : 870px ){
@@ -312,26 +298,44 @@ body{
   }
 
   .meme-editor-modal{
-    width: 80%;
+    display: flex;
+    width: 100%;
     position: absolute;
-    top: 0
-  }
-  .main-header .header-container .main-nav .nav-links{
-   display: flex;
-    position: fixed;
-    right: 0;
     top: 0;
     flex-direction: column;
+  }
+  .meme-editor-modal .editor-container{
+    width: 100%;
+  }
+
+  .main-header .header-container .main-nav .nav-links{
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 84px;
+    flex-direction: column;
     height: 100vh;
-    background-color: rgb(0 0 0 / 90%);
-    width: 200px;
+    background-color: rgb(55 62 61 / 65%);
+    width: 300px;
     transform: translateX(100%);
     box-shadow: none;
-
+    justify-content: end;
     transition: transform .8s, box-shadow .8s;
   }
 
+  .main-header .header-container .main-nav .nav-links .links-div{
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .main-header .header-container .main-nav .nav-links .links-div a{
+    margin: 53px;
+  }
+
   body.open-menu .header-container .main-nav .nav-links {
+    z-index: 1;
     transform: translateX(0);
     box-shadow: -4px 0px 15px 0px #413e3e;
     align-items: end;
@@ -347,6 +351,7 @@ body{
     font-size: 35px;
     color: white;
     cursor: pointer;
+    outline: none;
   }
 
   body.open-menu .grid-site-container {
