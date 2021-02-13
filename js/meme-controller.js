@@ -20,12 +20,6 @@ const init = () => {
       openGallery();
     }
   });
-  // const elMenu = document.querySelector('.nav-links');
-  // elMenu.addEventListener('click', (e) => {
-  //   if (e.target !== elMenu) {
-  //     document.body.classList.toggle('open-menu');
-  //   }
-  // });
 }
 
 const renderGallery = (imgsAfterSearch) => {
@@ -35,10 +29,6 @@ const renderGallery = (imgsAfterSearch) => {
   }
   console.log('imgs', imgs);
   const strHTMLS = imgs.map(img => {
-
-    // return `
-    //   <img src="img/${img.id}.jpg" onclick="onImgClicked(${img.id})">
-    // `
 
     return `
       <div style="background-image: url(img/${img.id}.jpg)" onclick="onImgClicked(${img.id})"></div>
@@ -74,7 +64,6 @@ const openGallery = () => {
   elMems.style.display = 'none';
   updatePage('gallery');
   renderGallery();
-  // elEditor.style.display = 'none';
 }
 
 function renderMeme(imgId) {
@@ -85,7 +74,7 @@ function renderMeme(imgId) {
     var currMeme = getCurrMeme();
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
     currMeme.lines.forEach(line => {
-      drawText(line.txt, line.x, line.y, line.color, line.font, line.size);
+      drawText(line.txt, line.x, line.y, line.color, line.font, line.size, line.align);
     })
   }
 }
@@ -122,6 +111,7 @@ const onChangeAlign = (align) => {
   } else {
     lineCurrMeme.align = 'center';
   }
+  console.log('currMeme', currMeme);
   renderMeme(currMeme.selectedImgId)
 }
 
@@ -251,20 +241,3 @@ const downloadCanvas = (elLink) => {
   console.log('elLink.href', elLink.href);
   elLink.download = 'my-canvas';
 }
-
-// function onImgInput(ev) {
-//   loadImageFromInput(ev, renderImg)
-// }
-
-// function loadImageFromInput(ev, onImageReady) {
-//   document.querySelector('.share').innerHTML = ''
-//   var reader = new FileReader()
-
-//   reader.onload = function (event) {
-//     var img = new Image()
-//     img.onload = onImageReady.bind(null, img)
-//     img.src = event.target.result
-//     gImg = img
-//   }
-//   reader.readAsDataURL(ev.target.files[0])
-// }

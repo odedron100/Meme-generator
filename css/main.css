@@ -336,9 +336,6 @@ body{
 }
 
 @media (max-width : 870px ){
-  .meme-editor-modal-container {
-    position: static;
-  }
   .main-header .header-container{
     width: 80%;
   }
@@ -352,6 +349,8 @@ body{
   }
   .meme-editor-modal .editor-container{
     width: 100%;
+    margin: auto;
+    margin-top: 10px;
   }
 
   .main-header .header-container .main-nav .nav-links{
@@ -412,7 +411,12 @@ body{
 }
 
 .canvas-container{
-  width: 450px;
+  width: auto;
+  text-align: center;
+}
+
+.meme-editor-modal .canvas {
+  width: 200px;
 }
 
 }
@@ -431,10 +435,3 @@ body{
     transform: translateX(0px) translateY(0px);
   }
 }
-
-
-/* .main-footer{
-  display: grid;
-  grid-row: 3 / 3;
-  grid-column: 1 / 1;
-} */

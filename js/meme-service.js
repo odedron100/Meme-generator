@@ -41,8 +41,6 @@ const getCurrImgById = (imgId) => {
 }
 
 
-
-
 const drawText = (txt, x = 200, y = 50, color = 'white', font = 'impact', size = 50, align = 'center') => {
   gCtx.lineWidth = 2
   gCtx.strokeStyle = 'red'
@@ -95,8 +93,6 @@ const addLine = (txt = '', size = 50, font = 'impact', align = 'center', color =
     { txt, size, font, align, color, x: 200, y: 50 * gCurrMeme.lines.length },
   )
   gCurrMeme.selectedLineIdx++;
-  console.log('gCurrMeme.selectedLineIdx', gCurrMeme.selectedLineIdx);
-  console.log('gCurrMeme.lines', gCurrMeme.lines);
 }
 
 const filterGalleryImg = (value) => {
