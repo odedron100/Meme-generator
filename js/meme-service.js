@@ -2,6 +2,7 @@
 
 var gCurrMeme;
 var gMems;
+var gCuurPage = 'gallery';
 
 const gImgs = [
   { id: 1, url: 'img/1.jpg', keywords: ['president'] },
@@ -105,7 +106,6 @@ const filterGalleryImg = (value) => {
     })
     if (keyword.length > 0) return keyword;
   })
-  console.log('filteredImgRes', filteredImgRes);
   renderGallery(filteredImgRes);
 }
 
@@ -120,4 +120,23 @@ const createMems = () => {
   }
   gMems = mems;
   _saveToLocalStorage();
+}
+
+const updatePage = (currPage) => {
+  var elGallery = document.querySelector('.gallery');
+  var elMems = document.querySelector('.mems');
+  console.log('elMems', elMems);
+  console.log('elGallery', elGallery);
+  gCuurPage = currPage;
+  if (gCuurPage === 'gallery') {
+    elGallery.style.color = 'white'
+    elGallery.style.fontSize = '28' + 'px';
+    elMems.style.color = 'black'
+    elMems.style.fontSize = '22' + 'px';
+  } else if (gCuurPage === 'mems') {
+    elMems.style.color = 'white'
+    elMems.style.fontSize = '28' + 'px';
+    elGallery.style.color = 'black'
+    elGallery.style.fontSize = '22' + 'px';
+  }
 }

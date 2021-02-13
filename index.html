@@ -18,8 +18,8 @@
         <nav class="main-nav">
           <ul class="nav-links">
             <div class="links-div">
-              <li class="link" onclick="openGallery()"> <a href="#">Gallery</a></li>
-              <li class="link" onclick="onMemsOpen()" > <a href="#">Memes</a></li>
+              <li class="link" onclick="openGallery()"> <a href="#" class="gallery">Gallery</a></li>
+              <li class="link" onclick="onMemsOpen()" > <a href="#" class="mems">Memes</a></li>
               <li class="link"> <a href="#">About</a></li>
             </div>
           </ul>
@@ -33,10 +33,10 @@
           <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onHandleChangeSearch(event)">
         </div>
         <div class="search-keywords">
-          <span>funny</span>
-          <span>pets</span>
-          <span>baby</span>
-          <span>actor</span>
+          <span value="funny" class="funny-keywords" onclick="searchWord(this)">funny</span>
+          <span value="pets" class="pats-keywords" onclick="searchWord(this)">pats</span>
+          <span value="baby" class="baby-keywords" onclick="searchWord(this)">baby</span>
+          <span value="actor" class="actor-keywords" onclick="searchWord(this)">actor</span>
         </div>
       </header>
       <section class="gallery-container">

@@ -2,11 +2,16 @@
 var gElCanvas;
 var gCtx;
 var KEY = 'mems';
+var gCountBaby = 1;
+var gCountpats = 1;
+var gCountFunny = 1;
+var gCountActor = 1;
 
 const init = () => {
   renderGallery();
   renderCanvas();
   createMems();
+  updatePage('gallery');
 
   const elEditor = document.querySelector('.meme-editor-modal-container');
   elEditor.addEventListener('click', (e) => {
@@ -14,10 +19,10 @@ const init = () => {
       openGallery();
     }
   });
-  // const elEditor = document.querySelector('.meme-editor-modal-container');
-  // elEditor.addEventListener('click', (e) => {
-  //   if (e.target === elEditor) {
-  //     openGallery();
+  // const elMenu = document.querySelector('.nav-links');
+  // elMenu.addEventListener('click', (e) => {
+  //   if (e.target !== elMenu) {
+  //     document.body.classList.toggle('open-menu');
   //   }
   // });
 }
@@ -55,6 +60,7 @@ const openEditor = () => {
   const elMems = document.querySelector('.save-mems-container');
   elEditor.classList.add('visible');
   elMems.style.display = 'none';
+
 }
 
 const openGallery = () => {
@@ -65,6 +71,8 @@ const openGallery = () => {
   elContent.style.display = 'grid';
   elEditor.classList.remove('visible');
   elMems.style.display = 'none';
+  updatePage('gallery');
+  console.log('gCurrPage', gCurrPage);
   // elEditor.style.display = 'none';
 }
 
@@ -180,6 +188,8 @@ const onMemsOpen = () => {
   elContent.style.display = 'none';
   elEditor.classList.remove('visible');
   elMems.style.display = 'block';
+  updatePage('mems');
+  console.log('gCuurPage', gCuurPage);
 
   var mems = loadFromStorage(KEY);
   renderMemes(mems);
@@ -197,6 +207,30 @@ const onSave = () => {
   gMems.push(gElCanvas.toDataURL());
   _saveToLocalStorage();
   onMemsOpen();
+}
+
+const searchWord = (value) => {
+  if (value.innerHTML === 'actor') {
+    gCountActor++;
+    var elActor = document.querySelector('.actor-keywords');
+    elActor.style.fontSize = 16 + (gCountActor * 5) + 'px';
+    filterGalleryImg('actor');
+  } else if (value.innerHTML === 'baby') {
+    gCountBaby++;
+    var elBaby = document.querySelector('.baby-keywords');
+    elBaby.style.fontSize = 16 + (gCountBaby * 5) + 'px';
+    filterGalleryImg('baby');
+  } else if (value.innerHTML === 'pats') {
+    gCountpats++;
+    var elpats = document.querySelector('.pats-keywords');
+    elpats.style.fontSize = 16 + (gCountpats * 5) + 'px';
+    filterGalleryImg('pats');
+  } else if (value.innerHTML === 'funny') {
+    gCountFunny++;
+    var elFunny = document.querySelector('.funny-keywords');
+    elFunny.style.fontSize = 16 + (gCountFunny * 5) + 'px';
+    filterGalleryImg('funny');
+  }
 }
 
 const renderMemes = (mems) => {
