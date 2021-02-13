@@ -72,7 +72,7 @@ const openGallery = () => {
   elEditor.classList.remove('visible');
   elMems.style.display = 'none';
   updatePage('gallery');
-  console.log('gCurrPage', gCurrPage);
+  renderGallery();
   // elEditor.style.display = 'none';
 }
 
