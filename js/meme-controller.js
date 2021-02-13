@@ -3,7 +3,7 @@ var gElCanvas;
 var gCtx;
 var KEY = 'mems';
 var gCountBaby = 1;
-var gCountpats = 1;
+var gCountpets = 1;
 var gCountFunny = 1;
 var gCountActor = 1;
 
@@ -15,7 +15,8 @@ const init = () => {
 
   const elEditor = document.querySelector('.meme-editor-modal-container');
   elEditor.addEventListener('click', (e) => {
-    if (e.target === elEditor) {
+    const memeModal = document.querySelector('.meme-editor-modal');
+    if (e.target === elEditor || e.target === memeModal) {
       openGallery();
     }
   });
@@ -220,11 +221,11 @@ const searchWord = (value) => {
     var elBaby = document.querySelector('.baby-keywords');
     elBaby.style.fontSize = 16 + (gCountBaby * 5) + 'px';
     filterGalleryImg('baby');
-  } else if (value.innerHTML === 'pats') {
-    gCountpats++;
-    var elpats = document.querySelector('.pats-keywords');
-    elpats.style.fontSize = 16 + (gCountpats * 5) + 'px';
-    filterGalleryImg('pats');
+  } else if (value.innerHTML === 'pets') {
+    gCountpets++;
+    var elpets = document.querySelector('.pets-keywords');
+    elpets.style.fontSize = 16 + (gCountpets * 5) + 'px';
+    filterGalleryImg('pets');
   } else if (value.innerHTML === 'funny') {
     gCountFunny++;
     var elFunny = document.querySelector('.funny-keywords');
@@ -243,3 +244,27 @@ const renderMemes = (mems) => {
   const elMems = document.querySelector('.save-mems-container');
   elMems.innerHTML = strHTMLS;
 }
+
+const downloadCanvas = (elLink) => {
+  const data = gElCanvas.toDataURL()
+  elLink.href = data;
+  console.log('elLink.href', elLink.href);
+  elLink.download = 'my-canvas';
+}
+
+// function onImgInput(ev) {
+//   loadImageFromInput(ev, renderImg)
+// }
+
+// function loadImageFromInput(ev, onImageReady) {
+//   document.querySelector('.share').innerHTML = ''
+//   var reader = new FileReader()
+
+//   reader.onload = function (event) {
+//     var img = new Image()
+//     img.onload = onImageReady.bind(null, img)
+//     img.src = event.target.result
+//     gImg = img
+//   }
+//   reader.readAsDataURL(ev.target.files[0])
+// }

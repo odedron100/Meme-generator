@@ -160,19 +160,19 @@ body{
 }
 
 .main-content .gallery-container div:nth-child(6n+2){
-  animation: diving 1.6s 1.2s ease-in-out forwards;
+  animation: diving 1.6s 0.2s ease-in-out forwards;
 }
 
 .main-content .gallery-container div:nth-child(6n+3){
-  animation: diving 2.7s 1.8s ease-in-out forwards;
+  animation: diving 2.7s 0.6s ease-in-out forwards;
 }
 
 .main-content .gallery-container div:nth-child(6n+4){
-  animation: diving 2s 2.3s ease-in-out forwards;
+  animation: diving 2s 0.4s ease-in-out forwards;
 }
 
 .main-content .gallery-container div:nth-child(6n+5){
-  animation: diving 1.3s 2s ease-in-out forwards;
+  animation: diving 1.3s 0.8s ease-in-out forwards;
 }
 
 .main-content .gallery-container div:hover{
@@ -229,11 +229,6 @@ body{
 
 .meme-editor-modal .editor-container .control-box{
   width: 100%;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
-    justify-content: center;
-    align-items: center;
 }
 
 .meme-editor-modal .editor-container .control-box .fonts-select-contaier {
@@ -248,7 +243,7 @@ body{
   width: 100%;
 }
 
-.meme-editor-modal .editor-container .control-box .editor-button{
+.meme-editor-modal .editor-container .control-box .editor-button {
   width: 80px;
   height: 40px;
   font-size: 20px;
@@ -261,11 +256,36 @@ body{
   margin: 10px;
   transition: transform 0.15s ease-in-out;
   outline: none;
+  text-decoration: none;
+}
+
+.meme-editor-modal .editor-container .control-box .save-button-container {
+  display: flex;
+  width: 100%;
 }
 
 .meme-editor-modal .editor-container .control-box .save-button-container .editor-button {
-  width: 200px;
+  width: 120px;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meme-editor-modal .editor-container .control-box .editor-button.color-button {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  line-height: 40px;
+}
+
+.meme-editor-modal .editor-container .control-box .editor-button.color-button .input-color {
+  width: 60px;
+  height: 25px;
+  /* height: 100%; */
+  margin: auto;
+  background-color: transparent;
+  padding: 0;
 }
 
 .meme-editor-modal .editor-container .control-box .editor-button:hover{
@@ -286,6 +306,10 @@ body{
 
 .meme-editor-modal .editor-container input:focus{
   width: 400px;
+}
+
+.download-btn{
+  width: 200px;
 }
 
 .save-mems-container{
@@ -312,6 +336,9 @@ body{
 }
 
 @media (max-width : 870px ){
+  .meme-editor-modal-container {
+    position: static;
+  }
   .main-header .header-container{
     width: 80%;
   }
@@ -378,6 +405,15 @@ body{
     transition: background-color 2s;
   }
 
+  .mems-img {
+    height: 350px;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.canvas-container{
+  width: 450px;
+}
 
 }
 

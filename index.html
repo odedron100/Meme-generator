@@ -34,7 +34,7 @@
         </div>
         <div class="search-keywords">
           <span value="funny" class="funny-keywords" onclick="searchWord(this)">funny</span>
-          <span value="pets" class="pats-keywords" onclick="searchWord(this)">pats</span>
+          <span value="pets" class="pets-keywords" onclick="searchWord(this)">pets</span>
           <span value="baby" class="baby-keywords" onclick="searchWord(this)">baby</span>
           <span value="actor" class="actor-keywords" onclick="searchWord(this)">actor</span>
         </div>
@@ -61,7 +61,9 @@
             <button class="editor-button txt-align-left" name="left" onclick="onChangeAlign(this.name)">left</button>
             <button class="editor-button txt-align-center" name="center" onclick="onChangeAlign(this.name)">center</button>
             <button class="editor-button txt-align-right" name="right" onclick="onChangeAlign(this.name)">right</button>
-            <input type="color" name="font-color" class="editor-button input-color" value="#000000" onblur="onChangeFontColor(this.value)">
+            <button class="editor-button color-button" name="right" onclick="onChangeAlign(this.name)">
+              <input type="color" name="font-color" class="input-color" value="#000000" onblur="onChangeFontColor(this.value)">
+            </button>
             <div class="fonts-select-contaier">
               <select name="fonts" class="fonts" onchange="onSetFont(this.value)">
                 <option value="impact">Impact</option>
@@ -70,6 +72,7 @@
             </div>
             <div class="save-button-container">
               <button class="editor-button save-button" onclick="onSave()">SAVE</button>
+              <a class="download-btn editor-button" onclick="downloadCanvas(this)" download="">Download</a>
               <button class="share editor-button"><i class="fas fa-share"></i></button>
             </div>
           </div>
