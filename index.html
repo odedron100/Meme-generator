@@ -30,13 +30,13 @@
     <main class="main-content">
       <header class="search-header">
         <div class="search-input-div">
-          <input type="list" placeholder="SEARCH" name="search-input" onkeyup="onHandleChangeSearch(event)">
+          <input type="list" class="gallery-search" placeholder="SEARCH" name="search-input" onkeyup="onHandleChangeSearch(event)">
         </div>
         <div class="search-keywords">
-          <span value="funny" class="funny-keywords" onclick="searchWord(this)">funny</span>
-          <span value="pets" class="pets-keywords" onclick="searchWord(this)">pets</span>
-          <span value="baby" class="baby-keywords" onclick="searchWord(this)">baby</span>
-          <span value="actor" class="actor-keywords" onclick="searchWord(this)">actor</span>
+          <span value="funny" class="funny-keywords" onclick="onSearchWord(this)">funny</span>
+          <span value="pets" class="pets-keywords" onclick="onSearchWord(this)">pets</span>
+          <span value="baby" class="baby-keywords" onclick="onSearchWord(this)">baby</span>
+          <span value="actor" class="actor-keywords" onclick="onSearchWord(this)">actor</span>
         </div>
       </header>
       <input type="file" class="custom-file-input " name="image" onchange="onImgInput(event)" />

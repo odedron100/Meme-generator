@@ -3,6 +3,10 @@
 var gCurrMeme;
 var gMems;
 var gCuurPage = 'gallery';
+var gCountBaby = 1;
+var gCountpets = 1;
+var gCountFunny = 1;
+var gCountActor = 1;
 
 const gImgs = [
   { id: 1, url: 'img/1.jpg', keywords: ['president', 'trump'] },
@@ -25,6 +29,15 @@ const gImgs = [
   { id: 18, url: 'img/18.jpg', keywords: ['toy', 'movie'] },
 ]
 var gCurrImg;
+
+const createNewImg = (id, url) => {
+  var newImg = {
+    id,
+    url
+  }
+  gImgs.push(newImg);
+  updateCurrMeme(id);
+}
 
 const getImgs = () => {
   return gImgs;
@@ -96,6 +109,7 @@ const addLine = (txt = '', size = 50, font = 'impact', align = 'center', color =
 }
 
 const filterGalleryImg = (value) => {
+  searchWord(value);
   const filteredImgRes = gImgs.filter(img => {
     const keyword = img.keywords.filter(keyword => {
       return keyword.includes(value);
@@ -117,6 +131,31 @@ const createMems = () => {
   gMems = mems;
   _saveToLocalStorage();
 }
+
+const searchWord = (value) => {
+  if (value.innerHTML === 'actor') {
+    gCountActor++;
+    var elActor = document.querySelector('.actor-keywords');
+    elActor.style.fontSize = 16 + (gCountActor * 5) + 'px';
+    filterGalleryImg('actor');
+  } else if (value.innerHTML === 'baby') {
+    gCountBaby++;
+    var elBaby = document.querySelector('.baby-keywords');
+    elBaby.style.fontSize = 16 + (gCountBaby * 5) + 'px';
+    filterGalleryImg('baby');
+  } else if (value.innerHTML === 'pets') {
+    gCountpets++;
+    var elpets = document.querySelector('.pets-keywords');
+    elpets.style.fontSize = 16 + (gCountpets * 5) + 'px';
+    filterGalleryImg('pets');
+  } else if (value.innerHTML === 'funny') {
+    gCountFunny++;
+    var elFunny = document.querySelector('.funny-keywords');
+    elFunny.style.fontSize = 16 + (gCountFunny * 5) + 'px';
+    filterGalleryImg('funny');
+  }
+}
+
 
 const updatePage = (currPage) => {
   var elGallery = document.querySelector('.gallery');
@@ -150,4 +189,29 @@ function doUploadImg(elForm, onSuccess) {
     .catch(function (err) {
       console.error(err)
     })
+}
+
+function getClickedLineIdx(clickedPos) {
+  const idx = gMeme.lines.findIndex((ln) => {
+    let offset = 0;
+    const { pos, align, width, size } = ln;
+    if (align === 'left') offset = width / 2;
+    else if (align === 'right') offset = -width / 2;
+
+    return (
+      pos.x - width / 2 + offset < clickedPos.x &&
+      pos.x + width / 2 + offset > clickedPos.x &&
+      pos.y - size - 5 < clickedPos.y &&
+      pos.y + 15 > clickedPos.y
+    );
+  });
+  return idx;
+}
+
+function geClickedStickerIdx(clickedPos) {
+  const idx = gMeme.stickers.findIndex((sticker) => {
+    const { pos, width, height } = sticker;
+    return pos.x < clickedPos.x && pos.x + width > clickedPos.x && pos.y < clickedPos.y && pos.y + height > clickedPos.y;
+  });
+  return idx;
 }

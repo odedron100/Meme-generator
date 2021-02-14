@@ -1,11 +1,13 @@
 'use strict';
 var gElCanvas;
 var gCtx;
+var gStartPos;
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var KEY = 'mems';
-var gCountBaby = 1;
-var gCountpets = 1;
-var gCountFunny = 1;
-var gCountActor = 1;
+// var gCountBaby = 1;
+// var gCountpets = 1;
+// var gCountFunny = 1;
+// var gCountActor = 1;
 
 const init = () => {
   renderGallery();
@@ -206,28 +208,10 @@ const onSave = () => {
   }, 1500);
 }
 
-const searchWord = (value) => {
-  if (value.innerHTML === 'actor') {
-    gCountActor++;
-    var elActor = document.querySelector('.actor-keywords');
-    elActor.style.fontSize = 16 + (gCountActor * 5) + 'px';
-    filterGalleryImg('actor');
-  } else if (value.innerHTML === 'baby') {
-    gCountBaby++;
-    var elBaby = document.querySelector('.baby-keywords');
-    elBaby.style.fontSize = 16 + (gCountBaby * 5) + 'px';
-    filterGalleryImg('baby');
-  } else if (value.innerHTML === 'pets') {
-    gCountpets++;
-    var elpets = document.querySelector('.pets-keywords');
-    elpets.style.fontSize = 16 + (gCountpets * 5) + 'px';
-    filterGalleryImg('pets');
-  } else if (value.innerHTML === 'funny') {
-    gCountFunny++;
-    var elFunny = document.querySelector('.funny-keywords');
-    elFunny.style.fontSize = 16 + (gCountFunny * 5) + 'px';
-    filterGalleryImg('funny');
-  }
+const onSearchWord = (value) => {
+  searchWord(value);
+  var gallerySearch = document.querySelector('.gallery-search');
+  gallerySearch.value = value.innerHTML;
 }
 
 const renderMemes = (mems) => {
@@ -282,7 +266,8 @@ function loadImageFromInput(ev, onImageReady) {
     var img = new Image()
     img.onload = onImageReady.bind(null, img)
     img.src = event.target.result
-    gImg = img
+    createNewImg(makeId(), img.src);
+    // gImg = img
   }
   reader.readAsDataURL(ev.target.files[0])
 }
