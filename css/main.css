@@ -218,17 +218,59 @@ body{
 
 .meme-editor-modal .editor-container{
   /* background-color: rgb(201, 210, 218); */
+  position: relative;
   background-color: rgb(51, 51, 51, 0.8);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 600px;
-
 }
 
 .meme-editor-modal .editor-container .control-box{
   width: 100%;
+}
+
+.share-btn{
+  position: absolute;
+  color: white;
+  margin: 0;
+  right: 20px;
+}
+
+.custom-file-input{
+  width: 200px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Select some files';
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  margin-bottom: 20px;
+}
+
+
+.custom-file-input:focus{
+  outline: none;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 .meme-editor-modal .editor-container .control-box .fonts-select-contaier {
@@ -265,7 +307,8 @@ body{
 }
 
 .meme-editor-modal .editor-container .control-box .save-button-container .editor-button {
-  width: 120px;
+  width: 92px;
+  font-size: 16px;
   outline: none;
   display: flex;
   justify-content: center;

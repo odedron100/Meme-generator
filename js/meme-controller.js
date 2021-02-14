@@ -241,3 +241,46 @@ const downloadCanvas = (elLink) => {
   console.log('elLink.href', elLink.href);
   elLink.download = 'my-canvas';
 }
+
+
+function uploadImg(elForm, ev) {
+  ev.preventDefault();
+  document.getElementById('imgData').value = gElCanvas.toDataURL("image/jpeg");
+
+  // A function to be called if request succeeds
+  function onSuccess(uploadedImgUrl) {
+    uploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+    document.querySelector('.share-container').innerHTML = `
+          <a " class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+             click here to share!
+          </a>`
+  }
+  doUploadImg(elForm, onSuccess);
+}
+
+function onImgInput(ev) {
+  console.log('ev', ev);
+  loadImageFromInput(ev, renderImg)
+}
+
+function onImgInput(ev) {
+  loadImageFromInput(ev, renderImg)
+}
+
+function loadImageFromInput(ev, onImageReady) {
+  openEditor();
+  document.querySelector('.share-container').innerHTML = ''
+  var reader = new FileReader()
+
+  reader.onload = function (event) {
+    var img = new Image()
+    img.onload = onImageReady.bind(null, img)
+    img.src = event.target.result
+    gImg = img
+  }
+  reader.readAsDataURL(ev.target.files[0])
+}
+
+function renderImg(img) {
+  gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
+}

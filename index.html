@@ -39,6 +39,7 @@
           <span value="actor" class="actor-keywords" onclick="searchWord(this)">actor</span>
         </div>
       </header>
+      <input type="file" class="custom-file-input " name="image" onchange="onImgInput(event)" />
       <section class="gallery-container">
 
       </section>
@@ -70,10 +71,21 @@
                 <option value="ariel">Ariel</option>
               </select>
             </div>
+             <!-- <form class="share-btn" action="" method="POST" enctype="multipart/form-data"
+                  onsubmit="uploadImg(this, event)">
+                  <input name="img" id="imgData" type="hidden" />
+                  <button class="share-btn" type="submit">share</button>
+            </form> -->
+            <div class="share-container"></div>
             <div class="save-button-container">
               <button class="editor-button save-button" onclick="onSave()">SAVE</button>
               <a class="download-btn editor-button" onclick="downloadCanvas(this)" download="">Download</a>
-              <button class="share editor-button"><i class="fas fa-share"></i></button>
+              <!-- <button class="share-container editor-button" onclick="uploadImg(this,event)"><i class="fas fa-share"></i></button> -->
+               <form action="" method="POST" enctype="multipart/form-data"
+                  onsubmit="uploadImg(this, event)">
+                  <input name="img" id="imgData" type="hidden" />
+                  <button class="share-container editor-button" type="submit"><i class="fas fa-share"></i></button>
+            </form>
             </div>
           </div>
         </div>
