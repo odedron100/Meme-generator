@@ -378,6 +378,30 @@ body{
   border-radius: 5px;
 }
 
+.save-modal{
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.495);
+}
+
+.save-modal .save-modal-msg{
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  align-self: center;
+  margin: auto;
+  border: 3px solid white;
+  padding: 5px;
+  animation: saved-msg 0.75s ease-in-out infinite;
+}
+
+.save-modal .save-modal-msg .fa-bookmark{
+  color: rgb(126, 199, 16);
+}
+
 @media (max-width : 870px ){
   .main-header .header-container{
     width: 80%;
@@ -476,5 +500,17 @@ body{
   }
   100% {
     transform: translateX(0px) translateY(0px);
+  }
+}
+
+@keyframes saved-msg {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

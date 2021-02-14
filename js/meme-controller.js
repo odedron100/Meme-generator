@@ -197,7 +197,13 @@ const toggleMenu = () => {
 const onSave = () => {
   gMems.push(gElCanvas.toDataURL());
   _saveToLocalStorage();
-  onMemsOpen();
+  const elSaveModal = document.querySelector('.save-modal');
+  console.log('elSaveModal', elSaveModal);
+  elSaveModal.style.display = 'flex';
+  setTimeout(() => {
+    elSaveModal.style.display = 'none';
+    onMemsOpen();
+  }, 1500);
 }
 
 const searchWord = (value) => {
