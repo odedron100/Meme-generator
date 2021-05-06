@@ -4,10 +4,6 @@ var gCtx;
 var gStartPos;
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var KEY = 'mems';
-// var gCountBaby = 1;
-// var gCountpets = 1;
-// var gCountFunny = 1;
-// var gCountActor = 1;
 
 const init = () => {
   renderGallery();
@@ -190,6 +186,7 @@ const onMemsOpen = () => {
 
 const onHandleChangeSearch = (ev) => {
   filterGalleryImg(ev.target.value);
+  searchWord(ev);
 }
 
 const toggleMenu = () => {
@@ -218,8 +215,8 @@ const renderMemes = (mems) => {
   const strHTMLS = mems.map(mem => {
     console.log('mem', mem);
     return `
-      <img src="${mem}" class="mems-img">
-    `
+        <img src="${mem}" class="mems-img">
+      `
   }).join(' ');
   const elMems = document.querySelector('.save-mems-container');
   elMems.innerHTML = strHTMLS;

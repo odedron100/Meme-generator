@@ -304,6 +304,7 @@ body{
 .meme-editor-modal .editor-container .control-box .save-button-container {
   display: flex;
   width: 100%;
+  justify-content: center;
 }
 
 .meme-editor-modal .editor-container .control-box .save-button-container .editor-button {
@@ -358,7 +359,6 @@ body{
 .save-mems-container{
   width: 80%;
   justify-self: center;
-  background-color: rgb(255, 255, 255);
   padding: 15px;
   display: none;
   display: grid;
@@ -419,17 +419,25 @@ body{
     margin: auto;
     margin-top: 10px;
   }
+  .meme-editor-modal .editor-container .control-box .editor-button {
+    width: 40px;
+    font-size: 12px;
+  }
+
+  .meme-editor-modal .editor-container .control-box .editor-button.color-button .input-color {
+  width: 24px;
+  }
 
   .main-header .header-container .main-nav .nav-links{
     display: flex;
     position: fixed;
-    right: 0;
+    left:0 ;
     top: 84px;
     flex-direction: column;
     height: 100vh;
     background-color: rgb(55 62 61 / 65%);
     width: 300px;
-    transform: translateX(100%);
+    transform: translateX(-130%);
     box-shadow: none;
     justify-content: end;
     transition: transform .8s, box-shadow .8s;
@@ -480,6 +488,7 @@ body{
 .canvas-container{
   width: auto;
   text-align: center;
+  padding: 10px;
 }
 
 .meme-editor-modal .canvas {
